@@ -10,7 +10,7 @@ var scale = 1;
 ////////event listener that changes the backgroundColor based on mouse movment/////////////////////
 body.addEventListener('mousemove', (e)=>{
    x = e.clientX * .5;
-   y = e.clientY * .5;
+   y = e.clientY * .2;
    z = window.scrollY * .25;
   body.style.backgroundColor = "rgb("+x+","+y+","+z+")";
 })
@@ -42,10 +42,8 @@ pics.forEach((pic)=>{
 
  scale += event.deltaY * -0.01;
 
- // Restrict scale
  scale = Math.min(Math.max(.125, scale), 4);
 
- // Apply scale transform
  pic.style.transform = `scale(${scale})`;
  console.log(scale);
   })
@@ -68,7 +66,7 @@ window.addEventListener('load', (e)=>{
 const paragraphs = document.querySelectorAll('p');
 paragraphs.forEach((p)=>{
   p.addEventListener('mouseover', (e)=>{
-    e.target.style.color = 'coral';
+    e.target.style.color = 'white';
   })
 })
 //////////scroll event to change the page titles fontSize////////////////////
@@ -84,5 +82,12 @@ window.addEventListener('resize', ()=>{
 links.forEach((link)=>{
   link.addEventListener('mouseenter', ()=>{
     link.style.border = "thick solid black";
+  })
+})
+/////////////////added another border//////////////////////////
+const texts = document.querySelectorAll('.text-content');
+texts.forEach((text)=>{
+  text.addEventListener('mouseover',()=>{
+    text.style.border = '3px solid black';
   })
 })
