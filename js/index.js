@@ -1,16 +1,20 @@
 // Your code goes here
 const body = document.querySelector('body');
 const links = document.querySelectorAll('nav a');
+const pics = document.querySelectorAll('img');
+//count variable needed for keydown listener
 var count = 0;
-////////event listener that changes the backgroundColor based on mouse movmentj
+//scale vairable for wheel listener
+var scale = 1;
+
+////////event listener that changes the backgroundColor based on mouse movment/////////////////////
 body.addEventListener('mousemove', (e)=>{
    x = e.clientX * .5;
    y = e.clientY * .5;
    z = window.scrollY * .25;
-
   body.style.backgroundColor = "rgb("+x+","+y+","+z+")";
 })
-/////// Event listener to add and remove text to my nav links
+/////// Event listener to add and remove text to my nav links////////////////////////
 body.addEventListener('keydown', (e)=>{
   console.log(e);
   count +=1;
@@ -29,4 +33,30 @@ body.addEventListener('keydown', (e)=>{
   if(e.keyCode == 32){
     e.preventDefault();
   }
+})
+
+///////Adding zoom function to images/////////////////////////////////////////////
+pics.forEach((pic)=>{
+  pic.addEventListener('wheel', (event)=>{
+    event.preventDefault();
+
+ scale += event.deltaY * -0.01;
+
+ // Restrict scale
+ scale = Math.min(Math.max(.125, scale), 4);
+
+ // Apply scale transform
+ pic.style.transform = `scale(${scale})`;
+ console.log(scale);
+  })
+})
+
+//////////////adding doubleclick for images//////////////////////////////////
+pics.forEach((pic)=>{
+  pic.addEventListener('dblclick', (e)=>{
+    TweenMax.to(pic, 1, {
+      rotation: 360,
+      ease: Elastic.easeOut.config( 1, 0.75)
+    })
+  })
 })
