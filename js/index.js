@@ -24,7 +24,7 @@ body.addEventListener('keydown', (e)=>{
       link.innerText = text.slice(0,(1+(link.innerText.length - count)));
     });
     count = 0;
-  }else if (e.key != "Backspace" || e.keyCode != 32) {
+  }else if (e.key != "Backspace" || e.key != "Shift") {
     links.forEach((link)=>{
       link.innerText += e.key;
     })
@@ -59,4 +59,20 @@ pics.forEach((pic)=>{
       ease: Elastic.easeOut.config( 1, 0.75)
     })
   })
+})
+///////////////////load event listener////////////////////////////////////
+window.addEventListener('load', (e)=>{
+  alert("sup dweeb");
+})
+//////////////////mouseover event listener//////////////////////////
+const paragraphs = document.querySelectorAll('p');
+paragraphs.forEach((p)=>{
+  p.addEventListener('mouseover', (e)=>{
+    e.target.style.color = 'coral';
+  })
+})
+//////////scroll event to change the page titles fontSize////////////////////
+window.addEventListener('scroll', ()=>{
+  let size = window.scrollY * .10;
+  document.querySelector('.logo-heading').style.fontSize = `${size}px`;
 })
