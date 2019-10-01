@@ -76,3 +76,13 @@ window.addEventListener('scroll', ()=>{
   let size = window.scrollY * .10;
   document.querySelector('.logo-heading').style.fontSize = `${size}px`;
 })
+//added resize event listener////////////////////////////////////////////////////
+window.addEventListener('resize', ()=>{
+  alert("oh am I not the right size for you??");
+})
+//////////////////////adding borders to links//////////////////
+links.forEach((link)=>{
+  link.addEventListener('mouseenter', ()=>{
+    link.style.border = "thick solid black";
+  })
+})
